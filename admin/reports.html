@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reports - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                </div>
+                <ul>
+                    <li><a href="index.html">Dashboard Home</a></li>
+                    <li><a href="manage-menu.html">Manage Menu</a></li>
+                    <li><a href="orders.html">View Orders</a></li>
+                    <li><a href="order-status.html">Update Order Status</a></li>
+                    <li><a href="promotions.html">Manage Promotions</a></li>
+                    <li><a href="reports.html" class="active">View Reports</a></li>
+                </ul>
+                <button class="logout-btn">Logout</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                    <span>Admin Panel</span>
+                </div>
+                <div class="admin-info">
+                    Welcome, Admin
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content">
+                <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; margin-bottom: 30px; color: var(--text-color);">View Reports</h1>
+
+                <!-- Revenue Summary -->
+                <div class="grid" id="revenue-summary">
+                    <div class="card" data-report-target="total-revenue">
+                        <h3>Total Revenue</h3>
+                        <p style="font-size: 36px; font-weight: 700; color: #E94560; margin: 10px 0;">$45,230</p>
+                        <p>This month</p>
+                    </div>
+                    <div class="card" data-report-target="growth">
+                        <h3>Growth</h3>
+                        <p style="font-size: 36px; font-weight: 700; color: #66bb6a; margin: 10px 0;">+18%</p>
+                        <p>vs last month</p>
+                    </div>
+                    <div class="card" data-report-target="orders">
+                        <h3>Orders</h3>
+                        <p style="font-size: 36px; font-weight: 700; color: #E94560; margin: 10px 0;">1,247</p>
+                        <p>This month</p>
+                    </div>
+                    <div class="card" data-report-target="customers">
+                        <h3>Customers</h3>
+                        <p style="font-size: 36px; font-weight: 700; color: #E94560; margin: 10px 0;">892</p>
+                        <p>Active users</p>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid" id="sales-charts-container">
+                    <div class="card">
+                        <h3>Sales Chart</h3>
+                        <div class="chart-container" id="sales-chart-container">
+                            <p>Chart.js Sales Chart Placeholder</p>
+                            <p>Ready for Chart.js integration</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Orders Trend</h3>
+                        <div class="chart-container" id="orders-chart-container">
+                            <p>Chart.js Orders Chart Placeholder</p>
+                            <p>Ready for Chart.js integration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid" id="additional-charts-container">
+                    <div class="card">
+                        <h3>Customer Growth</h3>
+                        <div class="chart-container" id="customer-growth-chart-container">
+                            <p>Chart.js Customer Chart Placeholder</p>
+                            <p>Ready for Chart.js integration</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Popular Items</h3>
+                        <div class="chart-container" id="popular-items-chart-container">
+                            <p>Chart.js Popular Items Chart Placeholder</p>
+                            <p>Ready for Chart.js integration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Selling Items -->
+                <div class="card" id="top-selling-items-section">
+                    <h3>Top Selling Items</h3>
+                    <table class="table" id="top-items-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Item Name</th>
+                                <th>Category</th>
+                                <th>Orders</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-items-tbody">
+                            <tr>
+                                <td>1</td>
+                                <td>Grilled Chicken Salad</td>
+                                <td>Main Dish</td>
+                                <td>156</td>
+                                <td>$2,808</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Fresh Mixed Fruit</td>
+                                <td>Dessert</td>
+                                <td>134</td>
+                                <td>$1,208</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Ginger Lemon Juice</td>
+                                <td>Juice</td>
+                                <td>128</td>
+                                <td>$896</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Veggie Pasta</td>
+                                <td>Main Dish</td>
+                                <td>112</td>
+                                <td>$2,464</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Berry Yogurt</td>
+                                <td>Dessert</td>
+                                <td>98</td>
+                                <td>$686</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

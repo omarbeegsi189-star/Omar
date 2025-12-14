@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Menu - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                </div>
+                <ul>
+                    <li><a href="index.html">Dashboard Home</a></li>
+                    <li><a href="manage-menu.html" class="active">Manage Menu</a></li>
+                    <li><a href="orders.html">View Orders</a></li>
+                    <li><a href="order-status.html">Update Order Status</a></li>
+                    <li><a href="promotions.html">Manage Promotions</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                </ul>
+                <button class="logout-btn">Logout</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                    <span>Admin Panel</span>
+                </div>
+                <div class="admin-info">
+                    Welcome, Admin
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content">
+                <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; margin-bottom: 30px; color: var(--text-color);">Manage Menu</h1>
+
+                <!-- Add Category Section -->
+                <div class="card" id="add-category-section">
+                    <h3>Add New Category</h3>
+                    <form style="margin-top: 15px;" id="add-category-form">
+                        <div class="form-group">
+                            <label for="category-name">Category Name</label>
+                            <input type="text" id="category-name" name="category-name" placeholder="e.g., Main Dishes" required>
+                        </div>
+                        <button type="submit" class="btn" id="add-category-btn">Add Category</button>
+                    </form>
+                </div>
+
+                <!-- Add Dish Section -->
+                <div class="card">
+                    <h3>Add New Dish</h3>
+                    <form style="margin-top: 15px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="dish-name">Dish Name</label>
+                                <input type="text" id="dish-name" placeholder="e.g., Grilled Chicken Salad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dish-category">Category</label>
+                                <select id="dish-category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="main">Main Dishes</option>
+                                    <option value="juice">Juices</option>
+                                    <option value="dessert">Desserts</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="dish-price">Price ($)</label>
+                                <input type="number" id="dish-price" step="0.01" placeholder="15.99" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dish-image">Dish Image</label>
+                                <input type="file" id="dish-image" class="image-input" accept="image/*" required>
+                                <img class="image-preview" style="display: none; max-width: 100px; margin-top: 10px; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dish-description">Description</label>
+                            <textarea id="dish-description" rows="3" placeholder="Describe the dish ingredients and preparation..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Add Dish</button>
+                    </form>
+                </div>
+
+                <!-- Current Menu Items -->
+                <div class="card" id="menu-items-section">
+                    <h3>Current Menu Items</h3>
+                    <table class="table" id="menu-items-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="menu-items-tbody">
+                            <tr>
+                                <td><img src="../media/egeswithbrade-maindish-menu.png" alt="Eggs with Bread" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;"></td>
+                                <td>Eggs with Bread</td>
+                                <td>Main Dish</td>
+                                <td>$12.50</td>
+                                <td>Fresh eggs with whole grain bread</td>
+                                <td>
+                                    <button class="btn btn-secondary edit-menu-item-btn" style="margin-right: 5px;" data-item-id="1">Edit</button>
+                                    <button class="btn delete-menu-item-btn" style="background-color: #ef5350;" data-item-id="1">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="../media/fish-main-dish-menu.png" alt="Grilled Fish" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;"></td>
+                                <td>Grilled Fish</td>
+                                <td>Main Dish</td>
+                                <td>$18.75</td>
+                                <td>Fresh grilled salmon with herbs</td>
+                                <td>
+                                    <button class="btn btn-secondary edit-menu-item-btn" style="margin-right: 5px;" data-item-id="2">Edit</button>
+                                    <button class="btn delete-menu-item-btn" style="background-color: #ef5350;" data-item-id="2">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="../media/Ginger-lemon-juice-menu.png" alt="Ginger Lemon Juice" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;"></td>
+                                <td>Ginger Lemon Juice</td>
+                                <td>Juice</td>
+                                <td>$6.50</td>
+                                <td>Fresh ginger and lemon juice</td>
+                                <td>
+                                    <button class="btn btn-secondary edit-menu-item-btn" style="margin-right: 5px;" data-item-id="3">Edit</button>
+                                    <button class="btn delete-menu-item-btn" style="background-color: #ef5350;" data-item-id="3">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="../media/Banana-Bread-dessert-menu.png" alt="Banana Bread" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;"></td>
+                                <td>Banana Bread</td>
+                                <td>Dessert</td>
+                                <td>$8.25</td>
+                                <td>Homemade banana bread with nuts</td>
+                                <td>
+                                    <button class="btn btn-secondary edit-menu-item-btn" style="margin-right: 5px;" data-item-id="4">Edit</button>
+                                    <button class="btn delete-menu-item-btn" style="background-color: #ef5350;" data-item-id="4">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

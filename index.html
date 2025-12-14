@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luscious - Healthy Bites Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="media/logo-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="media/logo-icon.png" alt="Healthy Bites Logo" class="logo-img">
+            Healthy Bites
+        </div>
+        
+        <nav class="nav-links">
+            <!-- <a href="index.html">Home</a> -->
+            <a href="menu.html">Food Menu</a>
+            <a href="#">My Profile</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="actions">
+            <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            <a href="login_signup_page.html">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        
+        <div class="deco-top-left-container">
+             <img src="media/lemon-volatile-element.png" alt="Scattered Spices" class="deco-spices-left" >
+        </div>
+
+        <div class="hero-content">
+            <h1>Take a taste. <br> Come join us.</h1>
+            <p>
+                Life is so endlessly delicious. Dumpling is a broad classification for a dish that consists of pieces of dough made from a variety of starch sources wrapped around a filling.
+            </p>
+            <button style="background-color: rgb(228, 76, 0); color: #f7f7f7; border: #f7f7f7;"  class="cta-btn">Explore Now</button>
+        </div>
+
+        <div class="hero-image-container">
+            <img src="media/meet-maindish-menu.png" alt="Delicious Main Dish" class="main-dish-image">
+            <img src="media/spoon-volatile-element.png" alt="Spoon" class="spoon"> 
+            <img src="media/sauce-volatile-element.png" alt="Spice Trail" class="sauce-bowl">
+            <img src="media/Mint-volatile-element.png" alt="Tomato" class="deco-tomato-float">
+        </div>
+   
+    </section>
+    
+    <section class="menu-showcase">
+        <h2 class="section-title">Most Ordered Items</h2>
+        <p class="section-subtitle">Please serve yourself without any hesitate</p>
+        
+        <div class="category-filter">
+            <span class="category-link active" data-category="main">Main Dish</span>
+            <span class="category-link" data-category="juices">Juices</span>
+            <span class="category-link" data-category="dessert">Dessert</span>
+
+        </div>
+    
+       
+ 
+        <div class="dishes-container">
+            <div class="dishes-grid dish-category main-dish-content active-category" data-category="main">
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/egeswithbrade-maindish-menu.png" alt="Stirred Egg" class="dish-img">
+                    </div>
+                    <h3>Stirred Egg</h3>
+                    <p>This might be the most common Chinese family dish. The dish is easy to cook...</p>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/Pasta-Tomato-Maindish-Menu.png" alt="Kung Pao Chicken" class="dish-img">
+                    </div>
+                    <h3>Kung Pao Chicken</h3>
+                    <p>When temperatures plummet and you're craving something warm and cozy...</p>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/meetwithrice-maindish-menu.png" alt="Sweet Pork Chops" class="dish-img">
+                    </div>
+                    <h3>Sweet Chicken Chops</h3>
+                    <p>Sweet and sour dishes are popular among Chinese diners, although the ingredients...</p>
+                </div>
+            </div>
+
+            <div class="dishes-grid dish-category juices-content" data-category="juices">
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/lemonmint-juice-menu.png" alt="Lemon Mint Juice" class="dish-img">
+                    </div>
+                    <h3>Lemon Mint Juice</h3>
+                    <p>Refreshing blend of lemon and mint, perfect for a healthy start to your day...</p>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/Ginger-lemon-juice-menu.png" alt="Ginger Lemon Juice" class="dish-img">
+                    </div>
+                    <h3>Ginger Lemon Juice</h3>
+                    <p>A zesty mix of ginger and lemon, boosting immunity and digestion...</p>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/apples-juice-menu.png" alt="Apple Juice" class="dish-img">
+                    </div>
+                    <h3>Fresh Apple Juice</h3>
+                    <p>Natural sweetness from fresh apples, rich in vitamins and antioxidants...</p>
+                </div>
+            </div>
+
+            <div class="dishes-grid dish-category dessert-content" data-category="dessert">
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/Banana-Bread-dessert-menu.png" alt="Banana Bread" class="dish-img">
+                    </div>
+                    <h3>Banana Bread</h3>
+                    <p>Moist and flavorful banana bread, a healthy treat for dessert lovers...</p>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/berryyogurt-dessert-menu.png" alt="Berry Yogurt" class="dish-img">
+                    </div>
+                    <h3>Berry Yogurt</h3>
+                    <p>Creamy yogurt topped with fresh berries, a light and nutritious dessert...</p>
+                </div>
+
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/FreshMixedFruit-dessert-menu.png" alt="Mixed Fruit Salad" class="dish-img">
+                    </div>
+                    <h3>Mixed Fruit Salad</h3>
+                    <p>A colorful mix of seasonal fruits, naturally sweet and refreshing...</p>
+                </div>
+            </div>
+
+
+        </div>
+        
+        <!-- Main Dish volatile elements -->
+        <img src="media/Cinnamon-volatile- element.png" alt="Lobster Decoration" class="deco-lobster volatile-float" data-category="main">
+        <img src="media/Soysauce-volatile-element.png" alt="Peas Decoration" class="deco-peas volatile-float" data-category="main">
+
+        <!-- Juices volatile elements -->
+        <img src="media/Snow-volatile-element.png" alt="Lemon Decoration" class="deco-lemon-juice volatile-float hidden" data-category="juices" aria-hidden="true">
+        <img src="media/lemon-volatile-element.png" alt="Mint Decoration" class="deco-mint-juice volatile-float hidden" data-category="juices" aria-hidden="true">
+
+        <!-- Dessert volatile elements -->
+        <img src="media/coconut-volatile-element.png" alt="Almond Decoration" class="deco-almond-dessert volatile-float hidden" data-category="dessert" aria-hidden="true">
+        <img src="media/Almond-volatile-element.png" alt="Coconut Decoration" class="deco-coconut-dessert volatile-float hidden" data-category="dessert" aria-hidden="true">
+
+    </section>
+
+    <section class="todays-special">
+        <h2 class="section-title">Today’s Special</h2>
+        <p class="section-subtitle">Exclusive dish of the day</p>
+
+        <div class="dishes-container">
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <div class="dish-image-wrapper">
+                        <img src="media/SpicyPasta-Maindish-Menu.png" alt="Spicy Pasta" class="dish-img">
+                        <img src="media/chopsticks-volatile-element.png" alt="Chopsticks" class="chopsticks-float">
+                    </div>
+                    <h3>Spicy Pasta</h3>
+                    <p>A fiery blend of spices and pasta, perfect for spice lovers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="theme.js"></script>
+    <script src="js/footer.js"></script>
+
+    <script type="module" src="app.js"></script>
+    
+</body>
+</html>

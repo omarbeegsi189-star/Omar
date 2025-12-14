@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Healthy Bites Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="media/logo-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img src="media/logo-icon.png" alt="Healthy Bites Logo" class="logo-img">
+            Healthy Bites
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Food Menu</a>
+            <a href="cart.html">Cart</a>
+             <a href="contact.html">Contact</a>
+        </nav>
+        <div class="actions">
+            <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            <a href="login_signup_page.html">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="menu-page">
+        <div class="menu-search-bar">
+            <input type="text" id="menu-search-input" placeholder="Search for dishes..." class="menu-search-input">
+        </div>
+
+        <h2 class="section-title">Our Menu</h2>
+        <p class="section-subtitle">Discover our delicious and healthy options</p>
+
+        <div class="category-filter">
+            <span class="category-link active" data-category="main">Main Dishes</span>
+            <span class="category-link" data-category="juices">Smoothie/Juice</span>
+            <span class="category-link" data-category="dessert">Dessert</span>
+        </div>
+
+        <div class="dishes-container">
+            <div class="menu-grid dish-category main-dish-content active-category" data-category="main">
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/egeswithbrade-maindish-menu.png" alt="Stirred Egg" class="menu-img">
+                        <button class="favorite-btn" data-name="Stirred Egg" data-price="8.99" data-image="media/egeswithbrade-maindish-menu.png">❤️</button>
+                    </div>
+                    <h3>Stirred Egg</h3>
+                    <p>This might be the most common Chinese family dish. The dish is easy to cook...</p>
+                    <p class="menu-price">$8.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/Pasta-Tomato-Maindish-Menu.png" alt="Kung Pao Chicken" class="menu-img">
+                        <button class="favorite-btn" data-name="Kung Pao Chicken" data-price="12.99" data-image="media/Pasta-Tomato-Maindish-Menu.png">🤍</button>
+                    </div>
+                    <h3>Kung Pao Chicken</h3>
+                    <p>When temperatures plummet and you're craving something warm and cozy...</p>
+                    <p class="menu-price">$12.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/meetwithrice-maindish-menu.png" alt="Sweet Pork Chops" class="menu-img">
+                        <button class="favorite-btn" data-name="Sweet Chicken Chops" data-price="10.99" data-image="media/meetwithrice-maindish-menu.png">🤍</button>
+                    </div>
+                    <h3>Sweet Chicken Chops</h3>
+                    <p>Sweet and sour dishes are popular among Chinese diners, although the ingredients...</p>
+                    <p class="menu-price">$10.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/fish-main-dish-menu.png" alt="Grilled Fish" class="menu-img">
+                        <button class="favorite-btn" data-name="Grilled Fish" data-price="14.99" data-image="media/fish-main-dish-menu.png">🤍</button>
+                    </div>
+                    <h3>Grilled Fish</h3>
+                    <p>Freshly grilled fish with herbs and spices, a healthy and flavorful main dish.</p>
+                    <p class="menu-price">$14.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/salad_maindish-menu.png" alt="Green Salad" class="menu-img">
+                        <button class="favorite-btn" data-name="Green Salad" data-price="7.99" data-image="media/salad_maindish-menu.png">🤍</button>
+                    </div>
+                    <h3>Green Salad</h3>
+                    <p>A fresh mix of greens, vegetables, and a light dressing for a nutritious meal.</p>
+                    <p class="menu-price">$7.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-grid dish-category juices-content" data-category="juices">
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/lemonmint-juice-menu.png" alt="Lemon Mint Juice" class="menu-img">
+                        <button class="favorite-btn" data-name="Lemon Mint Juice" data-price="4.99" data-image="media/lemonmint-juice-menu.png">🤍</button>
+                    </div>
+                    <h3>Lemon Mint Juice</h3>
+                    <p>Refreshing blend of lemon and mint, perfect for a healthy start to your day...</p>
+                    <p class="menu-price">$4.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/Ginger-lemon-juice-menu.png" alt="Ginger Lemon Juice" class="menu-img">
+                        <button class="favorite-btn" data-name="Ginger Lemon Juice" data-price="5.49" data-image="media/Ginger-lemon-juice-menu.png">🤍</button>
+                    </div>
+                    <h3>Ginger Lemon Juice</h3>
+                    <p>A zesty mix of ginger and lemon, boosting immunity and digestion...</p>
+                    <p class="menu-price">$5.49</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/apples-juice-menu.png" alt="Apple Juice" class="menu-img">
+                        <button class="favorite-btn" data-name="Fresh Apple Juice" data-price="4.49" data-image="media/apples-juice-menu.png">🤍</button>
+                    </div>
+                    <h3>Fresh Apple Juice</h3>
+                    <p>Natural sweetness from fresh apples, rich in vitamins and antioxidants...</p>
+                    <p class="menu-price">$4.49</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="menu-grid dish-category dessert-content" data-category="dessert">
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/Banana-Bread-dessert-menu.png" alt="Banana Bread" class="menu-img">
+                        <button class="favorite-btn" data-name="Banana Bread" data-price="6.99" data-image="media/Banana-Bread-dessert-menu.png">🤍</button>
+                    </div>
+                    <h3>Banana Bread</h3>
+                    <p>Moist and flavorful banana bread, a healthy treat for dessert lovers...</p>
+                    <p class="menu-price">$6.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/berryyogurt-dessert-menu.png" alt="Berry Yogurt" class="menu-img">
+                        <button class="favorite-btn" data-name="Berry Yogurt" data-price="5.99" data-image="media/berryyogurt-dessert-menu.png">🤍</button>
+                    </div>
+                    <h3>Berry Yogurt</h3>
+                    <p>Creamy yogurt topped with fresh berries, a light and nutritious dessert...</p>
+                    <p class="menu-price">$5.99</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="media/FreshMixedFruit-dessert-menu.png" alt="Mixed Fruit Salad" class="menu-img">
+                        <button class="favorite-btn" data-name="Mixed Fruit Salad" data-price="7.49" data-image="media/FreshMixedFruit-dessert-menu.png">🤍</button>
+                    </div>
+                    <h3>Mixed Fruit Salad</h3>
+                    <p>A colorful mix of seasonal fruits, naturally sweet and refreshing...</p>
+                    <p class="menu-price">$7.49</p>
+                    <button class="menu-add-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volatile elements similar to index.html -->
+        <img src="media/Cinnamon-volatile- element.png" alt="Lobster Decoration" class="deco-lobster volatile-float" data-category="main">
+        <img src="media/Soysauce-volatile-element.png" alt="Peas Decoration" class="deco-peas volatile-float" data-category="main">
+
+        <img src="media/Snow-volatile-element.png" alt="Lemon Decoration" class="deco-lemon-juice volatile-float hidden" data-category="juices" aria-hidden="true">
+        <img src="media/lemon-volatile-element.png" alt="Mint Decoration" class="deco-mint-juice volatile-float hidden" data-category="juices" aria-hidden="true">
+
+        <img src="media/coconut-volatile-element.png" alt="Almond Decoration" class="deco-almond-dessert volatile-float hidden" data-category="dessert" aria-hidden="true">
+        <img src="media/Almond-volatile-element.png" alt="Coconut Decoration" class="deco-coconut-dessert volatile-float hidden" data-category="dessert" aria-hidden="true">
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script src="theme.js"></script>
+    <script src="js/footer.js"></script>
+
+    <script type="module">
+        import { cartManager } from './js/cart.js';
+        import { Favorites } from './js/favorites.js';
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Global variables for animation contexts and timelines
+        let currentCategory = 'main'; // Track current active category
+        let dishAnimationCtx = null; // GSAP context for dish animations
+        let volatileAnimationCtx = null; // GSAP context for volatile element animations
+
+        // ===============================================
+        // 1. Header Scroll Animation (unchanged)
+        // ===============================================
+        gsap.to(".navbar", {
+            y: -100,
+            ease: "power2.inOut",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: 99999,
+                scrub: true,
+                onUpdate: (self) => {
+                    if (self.direction === 1 && self.progress > 0.05) {
+                        gsap.to(".navbar", { y: -100, duration: 0.3 });
+                    } else if (self.direction === -1) {
+                        gsap.to(".navbar", { y: 0, duration: 0.3 });
+                    }
+                }
+            }
+        });
+
+        // ===============================================
+        // 3. Dish Animation Function (with GSAP context)
+        // ===============================================
+        function animateDishes() {
+            // Kill previous dish animation context to prevent overlaps
+            if (dishAnimationCtx) {
+                dishAnimationCtx.revert();
+            }
+
+            // Create new context for dish animations
+            dishAnimationCtx = gsap.context(() => {
+                const dishCards = gsap.utils.toArray('.active-category .dish-card, .active-category .menu-card');
+
+                gsap.from(dishCards, {
+                    scrollTrigger: {
+                        trigger: ".dishes-container",
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    y: 100,
+                    rotation: (i) => i % 2 === 0 ? 5 : -5,
+                    duration: 1.2,
+                    ease: "power2.out",
+                    stagger: 0.2,
+                    immediateRender: false
+                });
+            });
+        }
+
+        // ===============================================
+        // 4. Volatile Elements Animation Function (with GSAP context)
+        // ===============================================
+        function animateVolatileElements(category) {
+            // Kill previous volatile animation context to prevent overlaps
+            if (volatileAnimationCtx) {
+                volatileAnimationCtx.revert();
+            }
+
+            // Create new context for volatile element animations
+            volatileAnimationCtx = gsap.context(() => {
+                // Define animations for each category
+                const animations = {
+                    main: [
+                        { selector: ".deco-lobster", y: 200, rotation: 20 },
+                        { selector: ".deco-peas", y: -150, rotation: -30 }
+                    ],
+                    juices: [
+                        { selector: ".deco-lemon-juice", y: 100, rotation: 10 },
+                        { selector: ".deco-mint-juice", y: -80, rotation: -15 }
+                    ],
+                    dessert: [
+                        { selector: ".deco-almond-dessert", y: 120, rotation: 20 },
+                        { selector: ".deco-coconut-dessert", y: -100, rotation: -25 }
+                    ]
+                };
+
+                // Apply animations for the active category
+                if (animations[category]) {
+                    animations[category].forEach(anim => {
+                        gsap.to(anim.selector, {
+                            y: anim.y,
+                            rotation: anim.rotation,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: ".dishes-container",
+                                start: "top bottom",
+                                end: "bottom top",
+                                scrub: true
+                            }
+                        });
+                    });
+                }
+            });
+        }
+
+        // ===============================================
+        // 5. Category Switching Logic (Fixed for proper visibility and accessibility)
+        // ===============================================
+        const filterLinks = document.querySelectorAll('.category-link');
+        const dishContainers = document.querySelectorAll('.dish-category');
+        const volatileElements = document.querySelectorAll('.volatile-float');
+
+        function switchCategory(targetCategory) {
+            // Prevent switching to the same category (idempotent)
+            if (targetCategory === currentCategory) {
+                return;
+            }
+
+            // Update current category
+            currentCategory = targetCategory;
+
+            // 1. Update active link styling
+            filterLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-category') === targetCategory) {
+                    link.classList.add('active');
+                }
+            });
+
+            // 2. Handle dish category visibility and accessibility
+            dishContainers.forEach(container => {
+                const containerCategory = container.getAttribute('data-category');
+                if (containerCategory === targetCategory) {
+                    // Show active category dishes
+                    container.classList.add('active-category');
+                    container.setAttribute('aria-hidden', 'false');
+                } else {
+                    // Hide inactive category dishes
+                    container.classList.remove('active-category');
+                    container.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // 3. Handle volatile elements visibility and accessibility
+            volatileElements.forEach(element => {
+                const elementCategory = element.getAttribute('data-category');
+
+                if (elementCategory === targetCategory) {
+                    // Show elements for active category
+                    element.classList.remove('hidden');
+                    element.setAttribute('aria-hidden', 'false');
+                } else {
+                    // Hide elements for inactive categories
+                    element.classList.add('hidden');
+                    element.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // 4. Animate dishes and volatile elements for new category
+            animateDishes();
+            animateVolatileElements(targetCategory);
+
+            // 5. Refresh ScrollTrigger to handle new elements
+            ScrollTrigger.refresh();
+        }
+
+        // ===============================================
+        // 6. Event Listeners for Category Links
+        // ===============================================
+        document.querySelector('[data-category="main"]').addEventListener('click', () => switchCategory('main'));
+        document.querySelector('[data-category="juices"]').addEventListener('click', () => switchCategory('juices'));
+        document.querySelector('[data-category="dessert"]').addEventListener('click', () => switchCategory('dessert'));
+
+        // ===============================================
+        // 7. Initialize on Page Load
+        // ===============================================
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Set initial state for menu showcase
+            switchCategory('main');
+
+            // Initialize cart functionality
+            document.querySelectorAll('.menu-add-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = e.target.closest('.menu-card');
+                    const name = card.querySelector('h3').textContent;
+                    const priceText = card.querySelector('.menu-price').textContent;
+                    const price = parseFloat(priceText.replace('$', ''));
+                    const image = card.querySelector('.menu-img').src;
+                    cartManager.addItem(name, price, image);
+                });
+            });
+
+            // Initialize wishlist functionality
+            const favorites = new Favorites();
+
+            // Initialize favorite states
+            const initFavoriteStates = async () => {
+                const buttons = document.querySelectorAll('.favorite-btn');
+                for (const btn of buttons) {
+                    const name = btn.getAttribute('data-name');
+                    const isFav = await favorites.isFavorite(name);
+                    btn.textContent = isFav ? '❤️' : '🤍';
+                }
+            };
+            await initFavoriteStates();
+
+            // Add event listeners for favorite buttons
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const name = e.target.getAttribute('data-name');
+                    const price = e.target.getAttribute('data-price');
+                    const image = e.target.getAttribute('data-image');
+                    await favorites.toggleFavorite(name, price, image);
+                    // Update button state after toggle
+                    const isFav = await favorites.isFavorite(name);
+                    e.target.textContent = isFav ? '❤️' : '🤍';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

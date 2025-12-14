@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Healthy Food</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                </div>
+                <ul>
+                    <li><a href="index.html" class="active">Dashboard Home</a></li>
+                    <li><a href="manage-menu.html">Manage Menu</a></li>
+                    <li><a href="orders.html">View Orders</a></li>
+                    <li><a href="order-status.html">Update Order Status</a></li>
+                    <li><a href="promotions.html">Manage Promotions</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                </ul>
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                    <span>Admin Panel</span>
+                </div>
+                <div class="admin-info">
+                    Welcome, Admin
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content">
+                <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; margin-bottom: 30px; color: var(--text-color);">Dashboard Overview</h1>
+
+                <!-- Stats Cards -->
+                <div class="grid" id="dashboard-stats">
+                    <div class="card" data-api-target="total-orders">
+                        <h3>Total Orders</h3>
+                        <p style="font-size: 48px; font-weight: 700; color: #E94560; margin: 10px 0;">1,247</p>
+                        <p>+12% from last month</p>
+                    </div>
+                    <div class="card" data-api-target="revenue">
+                        <h3>Revenue</h3>
+                        <p style="font-size: 48px; font-weight: 700; color: #E94560; margin: 10px 0;">$24,580</p>
+                        <p>+8% from last month</p>
+                    </div>
+                    <div class="card" data-api-target="active-customers">
+                        <h3>Active Customers</h3>
+                        <p style="font-size: 48px; font-weight: 700; color: #E94560; margin: 10px 0;">892</p>
+                        <p>+15% from last month</p>
+                    </div>
+                    <div class="card" data-api-target="menu-items">
+                        <h3>Menu Items</h3>
+                        <p style="font-size: 48px; font-weight: 700; color: #E94560; margin: 10px 0;">47</p>
+                        <p>3 new this week</p>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="card">
+                    <h3>Recent Orders</h3>
+                    <table class="table" id="recent-orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-orders-tbody">
+                            <tr>
+                                <td>#12345</td>
+                                <td>John Doe</td>
+                                 <td>Grilled Chicken Salad, Fresh Juice</td>
+                                <td>$18.50</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>2024-01-15</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#12344</td>
+                                <td>Jane Smith</td>
+                                <td>Veggie Pasta, Lemon Mint Juice</td>
+                                <td>$22.00</td>
+                                <td><span class="status accepted">Accepted</span></td>
+                                <td>2024-01-15</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#12343</td>
+                                <td>Mike Johnson</td>
+                                <td>Fish Dish, Berry Yogurt</td>
+                                <td>$26.75</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                                <td>2024-01-14</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card" id="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+                        <button class="btn" id="add-new-dish-btn" onclick="window.location.href='manage-menu.html'">Add New Dish</button>
+                        <button class="btn" id="view-all-orders-btn" onclick="window.location.href='orders.html'">View All Orders</button>
+                        <button class="btn" id="create-promotion-btn" onclick="window.location.href='promotions.html'">Create Promotion</button>
+                        <button class="btn" id="view-reports-btn" onclick="window.location.href='reports.html'">View Reports</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

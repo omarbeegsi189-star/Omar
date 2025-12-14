@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup - Healthy Bites</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="media/logo-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for login/signup page */
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: url('media/marble-bg.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .auth-form-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-toggle {
+            display: flex;
+            margin-bottom: 30px;
+            background-color: var(--bg-color);
+            border-radius: 25px;
+            padding: 5px;
+            transition: var(--transition);
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 10px 20px;
+            border: none;
+            background-color: transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .toggle-btn.active {
+            background-color: #E94560;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #E94560;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #E94560;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-btn:hover {
+            background-color: #d63d52;
+        }
+
+        .form-title {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .error-message {
+            color: #E94560;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #28a745;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Volatile elements styles */
+        .volatile-lemon {
+            position: absolute;
+            width: 200px;
+            top: 30%;
+            left: 0%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .volatile-spoon {
+            position: absolute;
+            width: 180px;
+            top: 20%;
+            right: 10%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .volatile-mint {
+            position: absolute;
+            width: 200px;
+            bottom: 5%;
+            left: 0cap;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .auth-form-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+
+            .form-title {
+                font-size: 28px;
+            }
+
+            .volatile-lemon, .volatile-spoon, .volatile-mint {
+                display: none; /* Hide on mobile for better UX */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="media/logo-icon.png" alt="Healthy Bites Logo" class="logo-img">
+            Healthy Bites
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Food Menu</a>
+            <!-- <a href="#">Order Now</a> -->
+        </nav>
+        <div class="actions">
+            <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <img src="media/Mint-volatile-element.png" alt="Lemon Decoration" class="volatile-lemon">
+        <img src="media/anise-volatile-element.png" alt="Spoon Decoration" class="volatile-spoon">
+        <img src="media/Onion-slices-volatile-element.png" alt="Mint Decoration" class="volatile-mint">
+        <div class="auth-form-container">
+            <div class="form-toggle">
+                <button class="toggle-btn active" id="login-toggle" onclick="toggleForm('login')">Login</button>
+                <button class="toggle-btn" id="signup-toggle" onclick="toggleForm('signup')">Sign Up</button>
+            </div>
+
+            <div id="login-form" class="auth-form">
+                <h2 class="form-title">Welcome Back</h2>
+                <p class="form-subtitle">Sign in to your account</p>
+
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" required>
+                        <div class="error-message" id="login-email-error">Please enter a valid email</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" required>
+                        <div class="error-message" id="login-password-error">Password is required</div>
+                    </div>
+
+                    <button type="submit" class="auth-btn">Login</button>
+                    <div class="success-message" id="login-success">Login successful!</div>
+                </form>
+            </div>
+
+            <div id="signup-form" class="auth-form" style="display: none;">
+                <h2 class="form-title">Join Us</h2>
+                <p class="form-subtitle">Create your account</p>
+
+                <form id="signupForm" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" name="name" required>
+                        <div class="error-message" id="signup-name-error">Name is required</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="email" required>
+                        <div class="error-message" id="signup-email-error">Please enter a valid email</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password" required minlength="6">
+                        <div class="error-message" id="signup-password-error">Password must be at least 6 characters</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" name="confirmPassword" required>
+                        <div class="error-message" id="signup-confirm-error">Passwords do not match</div>
+                    </div>
+
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                    <div class="success-message" id="signup-success">Account created successfully!</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate navbar on scroll (similar to main page)
+        gsap.to(".navbar", {
+            y: -100,
+            ease: "power2.inOut",
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: 99999,
+                scrub: true,
+                onUpdate: (self) => {
+                    if (self.direction === 1 && self.progress > 0.05) {
+                        gsap.to(".navbar", { y: -100, duration: 0.3 });
+                    } else if (self.direction === -1) {
+                        gsap.to(".navbar", { y: 0, duration: 0.3 });
+                    }
+                }
+            }
+        });
+
+        // Animate form container on load
+        gsap.from(".auth-form-container", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        // Animate volatile elements on load
+        gsap.from(".volatile-lemon", {
+            opacity: 0,
+            x: -50,
+            rotation: -10,
+            duration: 1.5,
+            ease: "power2.out",
+            delay: 0.5
+        });
+
+        gsap.from(".volatile-spoon", {
+            opacity: 0,
+            x: 50,
+            rotation: 10,
+            duration: 1.5,
+            ease: "power2.out",
+            delay: 0.7
+        });
+
+        gsap.from(".volatile-mint", {
+            opacity: 0,
+            y: 50,
+            rotation: 5,
+            duration: 1.5,
+            ease: "power2.out",
+            delay: 0.9
+        });
+
+        // Subtle floating animation for volatile elements
+        gsap.to(".volatile-lemon", {
+            y: -10,
+            rotation: 5,
+            duration: 3,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: -1
+        });
+
+        gsap.to(".volatile-spoon", {
+            y: -15,
+            rotation: -5,
+            duration: 4,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: -1
+        });
+
+        gsap.to(".volatile-mint", {
+            y: -8,
+            rotation: 3,
+            duration: 3.5,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: -1
+        });
+
+        // Function to toggle between login and signup forms
+        function toggleForm(formType) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const loginToggle = document.getElementById('login-toggle');
+            const signupToggle = document.getElementById('signup-toggle');
+
+            if (formType === 'login') {
+                gsap.to(signupForm, { opacity: 0, duration: 0.3, onComplete: () => {
+                    signupForm.style.display = 'none';
+                    loginForm.style.display = 'block';
+                    gsap.to(loginForm, { opacity: 1, duration: 0.3 });
+                }});
+                loginToggle.classList.add('active');
+                signupToggle.classList.remove('active');
+            } else {
+                gsap.to(loginForm, { opacity: 0, duration: 0.3, onComplete: () => {
+                    loginForm.style.display = 'none';
+                    signupForm.style.display = 'block';
+                    gsap.to(signupForm, { opacity: 1, duration: 0.3 });
+                }});
+                signupToggle.classList.add('active');
+                loginToggle.classList.remove('active');
+            }
+        }
+
+        // Handle login form submission
+        async function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const emailError = document.getElementById('login-email-error');
+            const passwordError = document.getElementById('login-password-error');
+            const successMessage = document.getElementById('login-success');
+
+            // Reset messages
+            emailError.style.display = 'none';
+            passwordError.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            let isValid = true;
+
+            // Basic validation
+            if (!email || !/\S+@\S+\.\S+/.test(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!password) {
+                passwordError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                try {
+                    // Use Session helper to login
+                    const loggedIn = Session.login(email, password);
+                    if (!loggedIn) {
+                        emailError.textContent = 'Invalid email or password';
+                        emailError.style.display = 'block';
+                        return;
+                    }
+                    successMessage.style.display = 'block';
+                    gsap.from(successMessage, { opacity: 0, y: -10, duration: 0.5 });
+                    setTimeout(() => { window.location.href = 'customer_profile.html'; }, 700);
+                } catch (error) {
+                    console.error('Login error:', error);
+                    emailError.textContent = 'Login failed. Please try again.';
+                    emailError.style.display = 'block';
+                }
+            }
+        }
+
+        // Handle signup form submission
+        function handleSignup(event) {
+            event.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            const nameError = document.getElementById('signup-name-error');
+            const emailError = document.getElementById('signup-email-error');
+            const passwordError = document.getElementById('signup-password-error');
+            const confirmError = document.getElementById('signup-confirm-error');
+            const successMessage = document.getElementById('signup-success');
+
+            // Reset messages
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            passwordError.style.display = 'none';
+            confirmError.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            let isValid = true;
+
+            // Basic validation
+            if (!name) {
+                nameError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!email || !/\S+@\S+\.\S+/.test(email)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (!password || password.length < 6) {
+                passwordError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (password !== confirmPassword) {
+                confirmError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // use Session helper to create account
+                const user = { name, fullName: name, email, password, phone: '', addresses: [] };
+                const created = Session.signup(user);
+                if (!created) {
+                    emailError.textContent = 'Account already exists with this email';
+                    emailError.style.display = 'block';
+                    return;
+                }
+                successMessage.style.display = 'block';
+                gsap.from(successMessage, { opacity: 0, y: -10, duration: 0.5 });
+                setTimeout(() => { window.location.href = 'customer_profile.html'; }, 700);
+            }
+        }
+    </script>
+</body>
+</html>

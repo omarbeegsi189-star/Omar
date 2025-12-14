@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Promotions - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                </div>
+                <ul>
+                    <li><a href="index.html">Dashboard Home</a></li>
+                    <li><a href="manage-menu.html">Manage Menu</a></li>
+                    <li><a href="orders.html">View Orders</a></li>
+                    <li><a href="order-status.html">Update Order Status</a></li>
+                    <li><a href="promotions.html" class="active">Manage Promotions</a></li>
+                    <li><a href="reports.html">View Reports</a></li>
+                </ul>
+                <button class="logout-btn">Logout</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                    <span>Admin Panel</span>
+                </div>
+                <div class="admin-info">
+                    Welcome, Admin
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content">
+                <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; margin-bottom: 30px; color: var(--text-color);">Manage Promotions</h1>
+
+                <!-- Add Promotion Form -->
+                <div class="card" id="add-promotion-section">
+                    <h3>Add New Promotion</h3>
+                    <form style="margin-top: 15px;" id="add-promotion-form">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="promo-name">Promotion Name</label>
+                                <input type="text" id="promo-name" placeholder="e.g., Weekend Special" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="promo-discount">Discount (%)</label>
+                                <input type="number" id="promo-discount" min="1" max="100" placeholder="20" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="promo-description">Description</label>
+                            <textarea id="promo-description" rows="3" placeholder="Describe the promotion..." required></textarea>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="promo-expiry">Expiry Date</label>
+                                <input type="date" id="promo-expiry" required>
+                            </div>
+                            <div class="form-group" style="display: flex; align-items: end;">
+                                <label style="margin-right: 15px;">
+                                    <input type="checkbox" id="promo-enabled" checked> Enable Promotion
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Add Promotion</button>
+                    </form>
+                </div>
+
+                <!-- Current Promotions -->
+                <div class="card" id="promotions-section">
+                    <h3>🎉 Current Promotions</h3>
+                    <table class="table" id="promotions-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Discount</th>
+                                <th>Expiry Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Weekend Special</td>
+                                <td>20% off on all main dishes</td>
+                                <td>20%</td>
+                                <td>2024-02-01</td>
+                                <td><span class="promo-status" style="color: #66bb6a;">Enabled</span></td>
+                                <td>
+                                    <label style="display: flex; align-items: center; gap: 10px;">
+                                        <input type="checkbox" class="promo-toggle" checked>
+                                        <button class="btn btn-secondary" style="margin-left: 10px;">Edit</button>
+                                        <button class="btn" style="background-color: #ef5350;">Delete</button>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Healthy Monday</td>
+                                <td>15% off on salads and juices</td>
+                                <td>15%</td>
+                                <td>2024-01-31</td>
+                                <td><span class="promo-status" style="color: #66bb6a;">Enabled</span></td>
+                                <td>
+                                    <label style="display: flex; align-items: center; gap: 10px;">
+                                        <input type="checkbox" class="promo-toggle" checked>
+                                        <button class="btn btn-secondary" style="margin-left: 10px;">Edit</button>
+                                        <button class="btn" style="background-color: #ef5350;">Delete</button>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>New Year Deal</td>
+                                <td>25% off on desserts</td>
+                                <td>25%</td>
+                                <td>2024-01-20</td>
+                                <td><span class="promo-status" style="color: #ef5350;">Disabled</span></td>
+                                <td>
+                                    <label style="display: flex; align-items: center; gap: 10px;">
+                                        <input type="checkbox" class="promo-toggle">
+                                        <button class="btn btn-secondary" style="margin-left: 10px;">Edit</button>
+                                        <button class="btn" style="background-color: #ef5350;">Delete</button>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

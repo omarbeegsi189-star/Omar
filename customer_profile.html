@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Customer Profile • Healthy Bites</title>
+        <link rel="icon" type="image/png" href="media/logo-icon.png">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/profile.css">
+    </head>
+    <body class="profile-page">
+        <header class="navbar">
+                <div class="logo">
+                        <img src="media/logo-icon.png" alt="Healthy Bites Logo" class="logo-img">
+                        Healthy Bites
+                </div>
+        
+                <nav class="nav-links">
+                        <a href="index.html">Home</a>
+                        <a href="menu.html">Food Menu</a>
+                        <a href="customer_profile.html">My Profile</a>
+                </nav>
+                <div class="actions">
+                        <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+                        <a href="#">
+                                <button id="logout-btn" class="login-btn">Logout</button>
+                        </a>
+                </div>
+        </header>
+
+        <main class="container-narrow">
+            <section style="margin-top:18px;">
+                <div style="display:flex; justify-content:space-between; align-items:end; gap:12px;">
+                    <div>
+                        <h1 id="profile-header-name" style="margin:0 0 6px 0; font-size:26px; color: var(--text-color); transition: var(--transition);">--</h1>
+                        <p style="margin:0; color:var(--muted); transition: var(--transition);">Manage your account, orders and saved dishes.</p>
+                    </div>
+                    <div>
+                        <button id="edit-profile-btn" class="btn btn-primary">Edit Profile</button>
+                    </div>
+                </div>
+
+                <div class="profile-grid" style="margin-top:18px;">
+                    <!-- Left: Profile Card -->
+                    <aside class="glass-card profile-card">
+                        <div class="personal-info-grid">
+                            <div class="field-row">
+                                <div style="display:flex; gap:8px; align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z" fill="currentColor"/></svg><div style="font-weight:600;">Full Name</div></div>
+                                <div id="profile-name-display" style="color:var(--muted);">--</div>
+                            </div>
+
+                            <div class="field-row">
+                                <div style="display:flex; gap:8px; align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg><div style="font-weight:600;">Email</div></div>
+                                <div id="profile-email-display" style="color:var(--muted);">--</div>
+                            </div>
+
+                            <div class="field-row">
+                                <div style="display:flex; gap:8px; align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6z" fill="currentColor"/></svg><div style="font-weight:600;">Phone</div></div>
+                                <div id="profile-phone-display" style="color:var(--muted);">--</div>
+                            </div>
+
+                            <div class="field-row">
+                                <div style="display:flex; gap:8px; align-items:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 7 7 13 7 13s7-6 7-13c0-3.87-3.13-7-7-7z" fill="currentColor"/></svg><div style="font-weight:600;">Delivery Addresses</div></div>
+                                <div class="addresses-list" id="addresses-list">
+                                    <!-- addresses injected here -->
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Right: Orders + Favorites -->
+                    <div>
+                        <div class="glass-card orders-section">
+                            <h3 style="margin:0 0 8px 0;">Order History</h3>
+                            <div class="orders-list" id="orders-list">
+                                <!-- orders injected here -->
+                            </div>
+                        </div>
+
+                        <div class="glass-card" style="margin-top:14px; padding:14px;">
+                            <h3 style="margin:0 0 8px 0;">Favorite Dishes</h3>
+                            <div class="wishlist-grid" id="favorites-grid">
+                                <!-- favorites injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modals -->
+        <div id="edit-profile-modal" class="modal-backdrop" aria-hidden="true">
+            <div class="modal">
+                <div class="glass-card">
+                    <h3 style="color: var(--text-color); transition: var(--transition);">Edit Profile</h3>
+                    <form id="edit-profile-form">
+                        <div style="display:flex; gap:8px; margin-top:10px;">
+                            <input name="name" placeholder="Full Name" style="flex:1; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06);">
+                            <input name="email" placeholder="Email" style="flex:1; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06);">
+                        </div>
+                        <div style="display:flex; gap:8px; margin-top:10px;">
+                            <input name="phone" placeholder="Phone" style="flex:1; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06);">
+                            <input name="newAddress" placeholder="Add address (optional)" style="flex:1; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.06);">
+                        </div>
+                        <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+                            <button type="button" id="close-edit-modal" class="btn btn-ghost">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="order-details-modal" class="modal-backdrop">
+            <div class="modal">
+                <div class="glass-card" id="order-details-content">
+                    <!-- order details injected -->
+                </div>
+            </div>
+        </div>
+
+        <div id="tracking-modal" class="modal-backdrop">
+            <div class="modal">
+                <div class="glass-card" id="tracking-content">
+                    <!-- tracking injected -->
+                </div>
+            </div>
+        </div>
+
+        <div id="toast" class="toast" role="status" aria-live="polite">Saved</div>
+
+        <script src="theme.js"></script>
+        <script type="module" src="js/profile.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (window.Profile && typeof window.Profile.init === 'function') window.Profile.init();
+            });
+        </script>
+    </body>
+</html>

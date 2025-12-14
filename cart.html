@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Healthy Bites Online</title>
+    <link rel="icon" type="image/png" href="media/logo-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Reset and Font Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- CSS Variables for Light and Dark Mode --- */
+        :root {
+            --bg-color: rgba(255, 255, 255, 0.9);
+            --text-color: #333;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --button-bg: #E94560;
+            --button-hover: #d43d53;
+            --muted-text: #666;
+            --link-color: #555;
+            --link-hover: #E94560;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --footer-bg: #f7f7f7;
+            --footer-text: #666;
+            --transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Variables */
+
+        /* Global Fixes (Body and Background) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-image: url('media/marble-bg.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+            padding-top: 0px;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        body.dark-mode::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+
+
+        /* Cart Section */
+        .cart-section {
+            padding: 60px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cart-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .cart-subtitle {
+            font-size: 18px;
+            color: var(--muted-text);
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        /* Cart Container */
+        .cart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Cart Grid */
+        .cart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            width: 100%;
+        }
+
+        /* Cart Card */
+        .cart-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards, float 3s ease-in-out infinite;
+        }
+
+        .cart-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        .cart-img-wrapper {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .cart-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.252));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .cart-card:hover .cart-img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.3));
+        }
+
+        .cart-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .cart-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #E94560;
+            margin-bottom: 20px;
+        }
+
+        /* Quantity Controls */
+        .cart-qty-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cart-qty-btn {
+            background-color: #E94560;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cart-qty-btn:hover {
+            background-color: #d43d53;
+            transform: scale(1.1);
+        }
+
+        .cart-qty-btn:active {
+            transform: scale(0.95);
+        }
+
+        .cart-qty-display {
+            font-size: 18px;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Delete Button */
+        .cart-delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cart-delete-btn:hover {
+            background-color: #cc0000;
+            transform: scale(1.1);
+        }
+
+        /* Total Section */
+        .cart-total-section {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            transition: var(--transition);
+        }
+
+        .cart-total-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .cart-total-final {
+            border-top: 2px solid #E94560;
+            padding-top: 15px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #E94560;
+        }
+
+        /* Checkout Button */
+        .cart-checkout-btn {
+            background: linear-gradient(45deg, #E94560, #f76b8a);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cart-checkout-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .cart-checkout-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cart-checkout-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Empty Cart */
+        .cart-empty {
+            font-size: 24px;
+            color: var(--muted-text);
+            animation: fadeInUp 0.8s ease-out forwards;
+            transition: var(--transition);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .cart-section {
+                padding: 40px 20px;
+            }
+
+            .cart-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .cart-card {
+                padding: 20px;
+            }
+
+            .cart-img-wrapper {
+                height: 200px;
+            }
+
+            .cart-name {
+                font-size: 24px;
+            }
+
+            .cart-price {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="media/logo-icon.png" alt="Healthy Bites Logo" class="logo-img">
+            Healthy Bites
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Food Menu</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+        <div class="actions">
+            <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            <a href="login_signup_page.html">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="cart-section">
+        <h2 class="cart-title">Your Cart</h2>
+        <p class="cart-subtitle">Review your selected items</p>
+
+        <div class="cart-container">
+            <div class="cart-grid" id="cart-items"></div>
+            <div class="cart-total-section" id="cart-total" style="display: none;">
+                <div class="cart-total-item">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="cart-total-item">
+                    <span>Tax:</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="cart-total-item cart-total-final">
+                    <span>Total:</span>
+                    <span id="total">$0.00</span>
+                </div>
+                <button class="cart-checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            </div>
+            <div class="cart-empty" id="cart-empty" style="display: none;">Your cart is empty.</div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="theme.js"></script>
+    <script src="js/footer.js"></script>
+
+    <script type="module">
+        import { cartManager } from './js/cart.js';
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,427 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Healthy Bites Online</title>
+    <link rel="icon" type="image/png" href="media/logo-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <style>
+        /* Global Reset and Font Setup */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- CSS Variables for Light and Dark Mode --- */
+        :root {
+            --bg-color: rgba(255, 255, 255, 0.9);
+            --text-color: #333;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --button-bg: #E94560;
+            --button-hover: #d43d53;
+            --muted-text: #666;
+            --link-color: #555;
+            --link-hover: #E94560;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-color: #eee;
+            --footer-bg: #f7f7f7;
+            --footer-text: #666;
+            --transition: all 0.3s ease;
+        }
+
+
+        /* Global Fixes (Body and Background) */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-image: url('media/marble-bg.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+            padding-top: 0px;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        body.dark-mode::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+
+
+        /* Checkout Section */
+        .checkout-section {
+            padding: 60px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .checkout-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 50px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .checkout-subtitle {
+            font-size: 18px;
+            color: var(--muted-text);
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        /* Checkout Container */
+        .checkout-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .order-summary h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-total {
+            font-weight: 700;
+            font-size: 18px;
+            color: #E94560;
+        }
+
+        /* Delivery Address */
+        .delivery-address {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .delivery-address h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .address-option {
+            margin-bottom: 10px;
+        }
+
+        .address-option input {
+            margin-right: 10px;
+        }
+
+        /* Payment Method */
+        .payment-method {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .payment-method h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .payment-option {
+            margin-bottom: 10px;
+        }
+
+        .payment-option input {
+            margin-right: 10px;
+        }
+
+        /* Place Order Button */
+        .place-order-btn {
+            background: linear-gradient(45deg, #E94560, #f76b8a);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .place-order-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .place-order-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .place-order-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .checkout-section {
+                padding: 40px 20px;
+            }
+
+            .order-summary, .delivery-address, .payment-method {
+                padding: 20px;
+            }
+
+            .checkout-title {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="media/logo-icon.png" alt="Healthy Bites Logo" class="logo-img">
+            Healthy Bites
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Food Menu</a>
+            <a href="cart.html">Cart</a>
+             <a href="contact.html">Contact</a>
+        </nav>
+        <div class="actions">
+            <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            <a href="login_signup_page.html">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="checkout-section">
+        <h2 class="checkout-title">Checkout</h2>
+        <p class="checkout-subtitle">Review your order and complete your purchase</p>
+
+        <div class="checkout-container">
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="order-items"></div>
+                <div class="order-item order-total">
+                    <span>Total (incl. tax & delivery):</span>
+                    <span id="order-total">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Delivery Address -->
+            <div class="delivery-address">
+                <h3>Delivery Address</h3>
+                <div id="address-options"></div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="payment-method">
+                <h3>Payment Method</h3>
+                <div class="payment-option">
+                    <input type="radio" id="cod" name="payment" value="cod" checked>
+                    <label for="cod">Cash on Delivery (COD)</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="card" name="payment" value="card">
+                    <label for="card">Card Payment (placeholder)</label>
+                </div>
+            </div>
+
+            <!-- Place Order Button -->
+            <button class="place-order-btn" onclick="placeOrder()">Place Order</button>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="theme.js"></script>
+    <script src="js/footer.js"></script>
+
+    <script type="module">
+        import { Storage, STORAGE_KEYS, API } from './js/utils.js';
+
+        // Function to load order summary
+        function loadOrderSummary() {
+            const cart = Storage.get(STORAGE_KEYS.CART, []);
+            const orderItems = document.getElementById('order-items');
+            let subtotal = 0;
+
+            orderItems.innerHTML = '';
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'order-item';
+                itemElement.innerHTML = `
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>$${itemTotal.toFixed(2)}</span>
+                `;
+                orderItems.appendChild(itemElement);
+            });
+
+            const tax = subtotal * 0.08; // 8% tax
+            const deliveryFee = 2.99; // Fixed delivery fee
+            const total = subtotal + tax + deliveryFee;
+
+            const totalElement = document.getElementById('order-total');
+            totalElement.textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Function to load delivery addresses
+        function loadAddresses() {
+            const profile = JSON.parse(localStorage.getItem('profile') || '{}');
+            const addresses = profile.addresses || [];
+            const addressOptions = document.getElementById('address-options');
+
+            addressOptions.innerHTML = '';
+
+            if (addresses.length === 0) {
+                addressOptions.innerHTML = '<p>No addresses saved. Please add an address in your profile.</p>';
+                return;
+            }
+
+            addresses.forEach((address, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'address-option';
+                optionElement.innerHTML = `
+                    <input type="radio" id="address-${index}" name="address" value="${address}" ${index === 0 ? 'checked' : ''}>
+                    <label for="address-${index}">${address}</label>
+                `;
+                addressOptions.appendChild(optionElement);
+            });
+        }
+
+        // Function to place order
+        window.placeOrder = async function() {
+            const cart = Storage.get(STORAGE_KEYS.CART, []);
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const selectedAddress = document.querySelector('input[name="address"]:checked');
+            if (!selectedAddress) {
+                alert('Please select a delivery address!');
+                return;
+            }
+
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+            // Calculate totals
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.08;
+            const deliveryFee = 2.99;
+            const total = subtotal + tax + deliveryFee;
+
+            // Create order object
+            const order = {
+                id: 'HB-' + Date.now(),
+                date: new Date().toISOString().split('T')[0],
+                items: cart.map(item => ({
+                    name: item.name,
+                    qty: item.quantity,
+                    price: item.price
+                })),
+                total: total,
+                status: 'preparing',
+                address: selectedAddress.value,
+                paymentMethod: paymentMethod
+            };
+
+            try {
+                // Place order via API
+                const placedOrder = await API.placeOrder(order);
+
+                // Clear cart
+                Storage.set(STORAGE_KEYS.CART, []);
+
+                // Redirect to order tracking (customer profile)
+                window.location.href = 'customer_profile.html';
+            } catch (error) {
+                console.error('Error placing order:', error);
+                alert('Failed to place order. Please try again.');
+            }
+        };
+
+        // Initialize
+        loadOrderSummary();
+        loadAddresses();
+    </script>
+</body>
+</html>

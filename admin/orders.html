@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                </div>
+                <ul>
+                    <li><a href="index.html">🏠 Dashboard Home</a></li>
+                    <li><a href="manage-menu.html">🍽️ Manage Menu</a></li>
+                    <li><a href="orders.html" class="active">📋 View Orders</a></li>
+                    <li><a href="order-status.html">🔄 Update Order Status</a></li>
+                    <li><a href="promotions.html">🎉 Manage Promotions</a></li>
+                    <li><a href="reports.html">📊 View Reports</a></li>
+                </ul>
+                <button class="logout-btn">🚪 Logout</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="logo">
+                    <img src="../media/logo-icon.png" alt="Healthy Food Logo">
+                    <span>Admin Panel</span>
+                </div>
+                <div class="admin-info">
+                    Welcome, Admin
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn">☀</button>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content">
+                <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 36px; margin-bottom: 30px; color: var(--text-color);">View Orders</h1>
+
+                <!-- Search/Filter Section -->
+                <div class="card" id="search-filter-section">
+                    <h3>Search & Filter Orders</h3>
+                    <form id="search-filter-form" style="margin-top: 15px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label for="search-order">Search by Order ID or Customer</label>
+                                <input type="text" id="search-order" name="search-order" placeholder="Enter order ID or customer name">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-status">Filter by Status</label>
+                                <select id="filter-status" name="filter-status">
+                                    <option value="">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="accepted">Accepted</option>
+                                    <option value="rejected">Rejected</option>
+                                    <option value="delivered">Delivered</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-date">Filter by Date</label>
+                                <input type="date" id="filter-date" name="filter-date">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn" id="apply-filters-btn" style="margin-top: 15px;">Apply Filters</button>
+                    </form>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="card">
+                    <h3>📋 All Orders</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer Name</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>View Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#12345</td>
+                                <td>John Doe</td>
+                                <td>Grilled Chicken Salad, Fresh Juice</td>
+                                <td>$18.50</td>
+                                <td><span class="status pending">Pending</span></td>
+                                <td>2024-01-15</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#12344</td>
+                                <td>Jane Smith</td>
+                                <td>Veggie Pasta, Lemon Mint Juice</td>
+                                <td>$22.00</td>
+                                <td><span class="status accepted">Accepted</span></td>
+                                <td>2024-01-15</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#12343</td>
+                                <td>Mike Johnson</td>
+                                <td>Fish Dish, Berry Yogurt</td>
+                                <td>$26.75</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                                <td>2024-01-14</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#12342</td>
+                                <td>Sarah Wilson</td>
+                                <td>Spicy Pasta, Ginger Lemon Juice</td>
+                                <td>$24.50</td>
+                                <td><span class="status rejected">Rejected</span></td>
+                                <td>2024-01-14</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#12341</td>
+                                <td>David Brown</td>
+                                <td>Salad Maindish, Banana Bread</td>
+                                <td>$19.25</td>
+                                <td><span class="status delivered">Delivered</span></td>
+                                <td>2024-01-13</td>
+                                <td><button class="btn btn-secondary">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

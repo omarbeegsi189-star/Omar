@@ -1,0 +1,43 @@
+/* Minimal profile CSS: new reusable glass style and small UI helpers.
+   Keep global theme/colors from existing `style.css`. */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--glass-shadow);
+  padding: 20px;
+  transition: all 0.25s ease;
+}
+
+.glass-card:hover {
+  transform: scale(1.02);
+}
+
+.glass-card:active {
+  transform: scale(0.98);
+}
+
+/* small layout helper for profile grid */
+.profile-grid{ display:grid; grid-template-columns: 340px 1fr; gap:20px; align-items:start; }
+
+/* personal info grid for two-column layout */
+.personal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* modal + toast (minimal) */
+.modal-backdrop{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(6,8,9,0.45); z-index:1000; }
+.modal-backdrop.show{ display:flex; }
+.modal{ width:94%; max-width:720px; }
+.toast{ position:fixed; right:20px; bottom:20px; background:#47b881; color:#fff; padding:10px 14px; border-radius:10px; box-shadow:0 8px 24px rgba(46,64,54,0.12); z-index:1200; display:none; }
+.toast.show{ display:block; }
+
+@media (max-width:980px){
+  .profile-grid{ grid-template-columns:1fr; }
+  .personal-info-grid{ grid-template-columns:1fr; }
+}
